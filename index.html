@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<style type="text/css">
+    *{margin: 0; padding: 0; box-sizing: border-box; font-family: sans-serif; font-weight: bold;}
+    body {background:#383838; box-shadow: 0 0 20px #383838;}
+    body::-webkit-scrollbar {width: 5px;}
+    body::-webkit-scrollbar-thumb {background:grey; border-radius: 6px;}
+    body::-webkit-scrollbar-track {background:black;}
+    .container-kapsam { width: 100%; display: flex;}
+    nav {position:fixed; width: 300px; height: 100vh; background:#0d0d0d; box-shadow: 0 0 20px #0d0d0d; overflow:hidden auto;z-index: 10000; padding-bottom: 15.5px; }
+    nav::-webkit-scrollbar {width: 5px;}
+    nav::-webkit-scrollbar-thumb {background:grey; border-radius: 6px;}
+    nav::-webkit-scrollbar-track {background:black;}
+    .nav-header { position:relative; display: flex; color: white; justify-content: space-between; margin-left: 8px; margin-right: 8px; cursor: pointer; margin-top: 14px;}
+    .nav-header span {display: flex; align-items: center;}
+    .nav-header span h4 {color: white; text-shadow: 0 0 2px white; position:relative; left: 7px; font-size: 18.5px;}
+    .nav-header i {font-size: 34px;}
+    .nav-header ion-icon {font-size: 34px; position:relative;}
+    
+
+    .nav-header-input-ortala{display: flex; align-items: center; justify-content: center;}
+    .nav-header-input {position: relative; width: 260px; height: 36px; background:black; border-radius: 4px; box-shadow: 0 0 16px black; position: relative; margin-top:20px; display: flex; align-items: center; justify-content: space-between;}
+     .nav-header-input input {width:88.5%; height:30px; border-style: none; outline: none; background: black; color: white; text-shadow: 0 0 2px white;}
+    .nav-header-input input::placeholder {position: relative; color: white; text-shadow: 0 0 2PX white; left: 4PX;}
+    .nav-header-input ion-icon {color:white; position: relative; left: 4px; font-size: 20px;}
+
+    .nav-menü {position: relative; color: white; margin-top: 28px; margin-left:8px; margin-right: 8px;}
+    .nav-menü span {color: white; text-shadow: 0 0 2px white; font-size: 18.6px; cursor: pointer;}
+    .nav-menü label {position: relative; display: flex; align-items: center; height: 60px; cursor: pointer; top: 8px; margin-bottom: 6px;}
+    .nav-menü label span {position: absolute; right: 4px; width:6px; height: 42px; background: #81b71a; box-shadow: 0 0 12px  #81b71a; border-radius: 4px; display: none;}
+     .nav-menü label.active span {display: block;}
+    .nav-menü label:hover,.nav-menü label.active {background-color:#4f4f4f; border-radius: 4px; box-shadow: 0 0 14px #5d5d5d;}
+    .nav-menü label:hover h4,.nav-menü label.active h4{color:#c9c9c9; text-shadow: 0 0 2px #c9c9c9;}
+    .nav-menü label:hover ion-icon,.nav-menü label.active ion-icon {color:#c9c9c9;}
+    .nav-menü label ion-icon {font-size: 30px; position: absolute; left: 5px;}
+    .nav-menü label h4 {position: relative; color: white; text-shadow:0 0 2px white; left: 49px;}
+
+    .nav-playlist {position: relative; margin-top: 20px; margin-left: 10px; margin-right: 10px; border-bottom: 2px solid white; padding-bottom: 16px;}
+    .playlist-plus{display: flex; justify-content: space-between; align-items: center; cursor:pointer;}
+    .nav-playlist span {color: white; text-shadow: 0 0  2px white; font-size:18.5px; position: relative;}
+    .nav-playlist span ion-icon {font-size: 30px;}
+
+    .nav-playlist .Playlist-music {position: relative; display: flex; align-items: center; justify-content: space-between; top: 12px; width: 100%; height:56px; margin-bottom: 6px; }
+    .nav-playlist .Playlist-music label {position: relative; display: flex; align-items: center; cursor: pointer; }
+    .nav-playlist .Playlist-music:hover  , .nav-playlist .Playlist-music.active  {background-color:#5d5d5d; border-radius: 4px; box-shadow: 0 0 14px #5d5d5d;}
+    .nav-playlist .Playlist-music:hover h4 , .nav-playlist .Playlist-music.active h4 {color:#c9c9c9; text-shadow: 0 0 2px #c9c9c9;}
+    .nav-playlist .Playlist-music:hover ion-icon, .nav-playlist .Playlist-music.active ion-icon {color:#c9c9c9;}
+    .nav-playlist .Playlist-music label ion-icon {font-size: 26px; color: white; position: relative;}
+    .nav-playlist .Playlist-music label h4 {color: white; text-shadow: 0 0 2px white; position: relative; left: 4px;}
+    
+   
+
+    .nav-image {position: relative; margin-top: 22px; margin-left: 9px;  display: flex; justify-content: space-between; align-items: center;}
+    .nav-image label {position: relative; display: flex; color: white; cursor: pointer; align-items: center;}
+    .nav-image label img {width: 48px; height: 48px; border-radius: 50%; box-shadow: 0 0 8px white;}
+    .nav-image label span {position: relative; color: white; text-shadow: 0 0 2px white; left:10px;}
+    .nav-image label span h5 {opacity: 0.8;}
+    .nav-image .icon {color:#81b71a; text-shadow: 0 0 8px #81b71a; font-size: 22px; position: relative; right:14px; cursor: pointer;}
+
+
+
+    section {position: relative; width:calc(100% - 305px); height:auto; background:#0d0d0d; left: 302.5px;}
+    section .section-song-artist {width: 100%; height: 440px; position: relative;}
+    section .section-song-artist .photo-kapsam {width: 100%; height: 440px; position:absolute; left: 0; top: 0; }
+
+
+    .section-song-artist-header {position: relative; width: 100%; height: 70px; display: flex; justify-content: space-between; align-items: center;color: white;z-index: 10;background:none; }
+    .section-song-artist-header-left {position: relative; display: flex; align-items: center; margin-left: 12px; cursor: pointer;z-index: 10; }
+    .section-song-artist-header-left label {position: relative; margin: 10px; cursor: pointer;}
+    .section-song-artist-header-left label #home {position: relative; display: flex; align-items: center; justify-content: center;}
+    .section-song-artist-header-left label #home::before {content: ''; width:41px; height:4px; background: #81b71a; box-shadow:0 0 10px  #81b71a; position: absolute; text-align: center; bottom: -5px; border-radius: 4px;}
+
+    .section-song-artist-header-right{position: relative; margin-right: 12px; cursor: pointer; z-index: 10;}
+    .section-song-artist-header-right ion-icon {font-size: 35px;}
+
+
+
+    .section-song-artist-play {position: absolute; bottom: 10px; width: 100%; display: flex; align-items: center; justify-content: space-between;  }
+    .section-song-artist-play-left {position: relative; width: 280px; background:none; height:130px;  z-index: 100; margin-left: 10px; display: flex; align-items: center; }
+    .section-song-artist-play-left label {display: flex; align-items: center; cursor: pointer; }
+    .section-song-artist-play-left label span {position: relative; color: white; text-shadow: 0 0 2px white; left:8.6px;}
+    .section-song-artist-play-left label span h4 {opacity: 0.8;}
+    .section-song-artist-play-left label img {width: 71px; height:71px; border-radius: 50%; box-shadow: 0 0 9px white;}
+    .play-icon {color: white; font-size: 22px; position: absolute; bottom: 0px; display: flex; align-items: center;}
+    .play-icon label {position: relative; margin-left: 8px; color: white; cursor: pointer; text-shadow: 0 0 2px white;}
+    
+
+    .play-tick {position: absolute; top: 24px; cursor: pointer; right: 0; background:#81b71a; box-shadow: 0 0 12px #81b71a; font-size: 18px; color: white; display: flex; align-items: center; justify-content: center; width:30px; height:30px; border-radius: 50%;}
+    .play-tick:hover {transform: scale(1.03);}
+
+
+
+    .section-song-artist-play-right {width:auto; height: 60px; z-index: 100; margin-right: 10px; display: flex;}
+    .section-song-artist-play-right h4 {width: auto; height: 35px; background:var(--clr); box-shadow: 0 0 11px var(--clr); color: white; text-shadow: 0 0 2px white; position:relative; margin: 10px; padding-left: 22px; padding-right: 22px; display: flex; align-items: center; justify-content: center; border-radius: 25px; cursor: pointer;}
+
+    .section-song-artist-play-right h4:hover {transform: scale(1.05);}
+    .section-song-artist-play-right h4 ion-icon {color: white; font-size: 21px; position: relative; left: -3px;}
+
+
+
+    .section-song-header {width: 100%; height: 60px; background:#1a1a1a; box-shadow: 0 0 16px #1a1a1a; display: flex; align-items: center; justify-content: space-between;}
+    .section-song-header .section-song-header-left {display:flex; align-items: center; cursor: pointer;}
+    .section-song-header .section-song-header-left label{position: relative; margin-left: 15px; margin: 19.5px;}
+    .section-song-header .section-song-header-left label h4 {color: white; text-shadow: 0 0 2px white; }
+    #popular {position: relative; display: flex; align-items: center; justify-content: center;}
+    #popular::before {content: ''; width: 70px; height: 4px; background: #81b71a; box-shadow: 0 0 6px  #81b71a; border-radius: 4px; position: absolute; bottom: -5px;}
+
+    .section-song-header .section-song-header-right {display:flex; align-items: center; cursor: pointer;}
+    .section-song-header .section-song-header-right label {margin-right: 15px; margin: 10px;}
+    .section-song-header .section-song-header-right label h4 {color: white; text-shadow: 0 0 2px white; }
+
+
+
+    .song-list {width:99%; height:490px; background:#222222; padding-bottom: 10px; overflow: hidden scroll; padding-bottom: 15px;}
+    .song-list::-webkit-scrollbar {width: 5px; display: none;}
+    .song-list:hover::-webkit-scrollbar {display: block;}
+    .song-list::-webkit-scrollbar-thumb {background:grey; border-radius: 6px;}
+    .song-list::-webkit-scrollbar-track {background:black;}
+    .song-list-header {position:relative; display: flex; align-items: center;}
+    .song-list-header label {position:relative;  cursor: pointer; margin-left: 26px; margin-right: 10px;  margin-top: 10px;  color: white; text-shadow: 0 0 2px white;}
+    
+    .song-list-header label h5 {opacity: 0.7;}
+    .number {position: absolute; left:14px; color:white; font-size: 22.5px; cursor: pointer; }
+    .song-list-albüm {position: relative; width: 96%; height: 100px; background: #1d1d1d; box-shadow: 0 0 13px #1d1d1d; margin-top: 10px; display: flex;   justify-content: space-between; align-items: center; left: 2%; border-radius: 4px;}
+    .song-list-albüm:hover,.song-list-albüm.active {transform: scale(1.02); background: black; box-shadow:0 0 13px black;}
+    .song-list-albüm.kactive {display: none;}
+    .song-list-albüm-img label {display: flex; align-items: center; position: relative; margin-left:56px; cursor: pointer;}
+    .song-list-albüm-img label span {position: relative; color: white; text-shadow: 0 0 2px white; left: 10px;}
+    .song-list-albüm-img label span h5 {opacity: 0.8;}
+    .song-list-albüm-img label img {width: 66px; height: 54px; border-radius: 4px; box-shadow: 0 0 4px white;}
+      
+    .song-country {position: relative; cursor: pointer;}
+    .song-country h4 {position: relative; color: white; text-shadow: 0 0 2px white; opacity: 0.9;}
+
+
+
+    
+    .song-list-albüm-izlenme {position: relative; display:flex; margin-right: 12px; }
+    .song-list-albüm-izlenme label {display: flex; align-items: center; justify-content: center; cursor: pointer; color: white; text-shadow: 0 0 2px white; margin: 18px; }
+    .song-list-albüm-izlenme label h4 {position: relative; left: 6.5px;}
+    .song-list-albüm-izlenme label ion-icon {font-size: 23px;}
+    #time {margin-left: 20px;}
+    #heart {color:#81b71a; font-size: 22px; text-shadow: 0 0 12px #81b71a;}
+
+    .nav-open {position: absolute; left: 12px; top: 3px; color: white;z-index: 100; display: none;}
+    .nav-open i { position: relative; font-size: 21px; color: #81b71a; text-shadow: 0 0 10px #81b71a; cursor: pointer;}
+
+
+    @media only screen and (max-width:1120px){
+        nav { width: 270px;}
+        .nav-header-input{width: 230px;}
+        section {width:calc(100% - 275px); left: 272.5px;}
+    }
+
+     @media only screen and (max-width:1086px){
+     .song-list-albüm-img label span{font-size: 14px; }
+        .song-list-albüm-img label img {width:57px; height: 45px;}
+        .number{font-size:20px;}
+        .song-list-albüm-img label{margin-left: 49px;}
+        .song-country {margin-left: 8px;}
+        .song-country h4{font-size: 13.5px;}
+        .song-list-albüm-izlenme label{margin:11px;}
+        .song-list-albüm-izlenme label h4 {font-size: 13.5px;}
+        .song-list-albüm-izlenme label ion-icon{font-size: 20px;}
+        #heart{font-size: 18.5px;}
+    }
+     @media only screen and (max-width:1020px){
+ 
+        .section-song-header .section-song-header-left label h4{font-size: 13px;}
+        .section-song-header .section-song-header-right label h4{font-size: 13px;}
+    }
+
+    @media only screen and (max-width:950px){
+        .song-country h4{display: none;}
+        .section-song-artist-play-right{ flex-direction: column; height: 108px;
+            }
+    }
+     @media only screen and (max-width:910px){
+        .section-song-header .section-song-header-left label h4{font-size: 11px; }
+        .section-song-header .section-song-header-right label h4{font-size: 11px;}
+    }
+       @media only screen and (max-width:845px){
+         nav { width: 240px;}
+        .nav-header-input{width: 200px;}
+        section {width:calc(100% - 245px); left: 242.5px;}
+        .section-song-header .section-song-header-right label{margin-right: 10px;}
+        .section-song-header .section-song-header-left label{margin-left: 13px; margin: 10px;}
+        .section-song-header .section-song-header-left label h4{font-size: 12px; }
+        .section-song-header .section-song-header-right label h4{font-size: 12px;}
+    }
+       @media only screen and (max-width:777px){
+        nav { display: none;}
+        nav.active{width: 300px; display: block;}
+        .nav-header-input{width: 260px;}
+        section {width:100%; left:0px;}
+        .nav-open{display: block;}
+        .nav-open.active {left: 310px;}
+        .nav-open.active i {transform: rotate(180deg);}
+    }
+    @media only screen and (max-width:560px){
+       
+        .section-song-artist-play-left label span {font-size: 13.5px;}
+        .section-song-artist-play-left label img {width: 57px; height: 57px;}
+        .play-icon label h6{font-size:11px;}
+        .play-icon label ion-icon {font-size: 20px;}
+        .play-tick{right: 35px;}
+         .section-song-artist-play-right h4 {padding-left:15px; padding-right: 15px;}
+    }
+</style>
+</head>
+<body>
+<div class="container-kapsam">
+    <nav>
+  
+         <div class="nav-header">
+            <span><i class="fa-brands fa-spotify"></i><h4>SPOTİFY</h4></span>
+            <ion-icon name="ellipsis-horizontal"></ion-icon>
+        </div>
+
+        <div class="nav-header-input-ortala">
+            <div class="nav-header-input">
+            <ion-icon name="search"></ion-icon><input type="search" name="" placeholder="Search Music..">
+        </div>
+        </div>
+
+        <div class="nav-menü">
+            <span>MENÜ</span> 
+           
+            <label class="nav-label active"><ion-icon name="home-outline"></ion-icon><h4>HOME</h4><span></span></label>
+            <label class="nav-label"><ion-icon name="radio-outline"></ion-icon><h4>DİSCOVER</h4><span></span></label>
+            <label class="nav-label"><ion-icon name="barcode-outline"></ion-icon><h4>RADİO</h4><span></span></label>
+            <label class="nav-label"><ion-icon name="mic-outline"></ion-icon><h4>ARTİST</h4><span></span></label>
+            <label class="nav-label"><ion-icon name="albums-outline"></ion-icon><h4>ALBUMS</h4><span></span></label>
+            <label class="nav-label"><ion-icon name="podium-outline"></ion-icon><h4>PODCASTS</h4><span></span></label>
+        </div>
+      
+
+       <div class="nav-playlist">
+            <div class="playlist-plus">
+                 <span>PLAYLİST</span>
+            <span><ion-icon name="add"></ion-icon></span>
+            </div>
+            <div class="Playlist-music active">
+                <label><ion-icon name="musical-notes-outline"></ion-icon><h4>Top Hit 2022-USA</h4></label>
+            <label id="remove"><ion-icon name="trash-outline"></ion-icon></label>
+            </div>
+
+            <div class="Playlist-music">
+                <label><ion-icon name="musical-notes-outline"></ion-icon><h4>Dancing</h4></label>
+            <label id="remove"><ion-icon name="trash-outline"></ion-icon></label>
+            </div>
+
+            <div class="Playlist-music">
+                <label><ion-icon name="musical-notes-outline"></ion-icon><h4>Relaxing Music</h4></label>
+            <label id="remove"><ion-icon name="trash-outline"></ion-icon></label>
+            </div>
+
+            <div class="Playlist-music">
+                <label><ion-icon name="musical-notes-outline"></ion-icon><h4>Insturmental</h4></label>
+            <label id="remove"><ion-icon name="trash-outline"></ion-icon></label>
+            </div>
+        </div>
+
+        <div class="nav-image">
+            <label><img src="https://media-exp1.licdn.com/dms/image/C4E03AQGYTfDVuTekdw/profile-displayphoto-shrink_100_100/0/1646331015779?e=1658361600&v=beta&t=q7qEmOsLxTIkl8pTfXfWz5ehdoPY7WAou_DOhUxglcg"><span><h4>KAAN ŞAHİN</h4><h5>@Kaan-38</h5></span></label>
+            <div class="icon"><i class="fa-solid fa-headphones"></i></div>
+        </div>
+  
+     
+    </nav>
+    
+
+
+
+    <section>
+        <div class="section-song-artist">
+            <div class="nav-open"><i class="fa-solid fa-angle-right"></i></div>
+           <img src="https://weareclassicrockers.com/sites/classicrockers.rock.tools/files/styles/site_width_image/public/2020-08/EDIT%20BAD%20COMPANY%20LIVE%20.jpg?itok=d3TmbZwy" class="photo-kapsam">
+
+            <div class="section-song-artist-header">
+               <div class="section-song-artist-header-left">
+                    <label><h4 id="home">HOME</h4></label>
+                   <label><h4>/POPULAR ARTİST</h4></label>
+               </div>
+               <div class="section-song-artist-header-right">
+                   <span><ion-icon name="ellipsis-horizontal"></ion-icon></span>
+               </div>
+            </div>
+            
+
+
+
+            <div class="section-song-artist-play">
+                 <div class="section-song-artist-play-left">
+                   <label>
+                       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsIskC7hJzW8HB2JS0MUMX7g8Fblxh2uEmtY3PLxtQ&s">
+                       <span>
+                           <h3>QUEEN</h3>
+                           <h4>Keep Yourself Alive</h4>
+                       </span>
+                   </label>
+                   <div class="play-icon">
+                       <label><ion-icon name="musical-notes-outline"></ion-icon></label>
+                       <label><h6>13.280.4300</h6></label>
+                       <label><h6>Monthy Listeners</h6></label>
+                   </div>
+                   <div class="play-tick">
+                      <ion-icon name="checkmark-sharp"></ion-icon>
+                   </div>
+                 </div>
+
+
+                 <div class="section-song-artist-play-right">
+                   <h4 style="--clr:#81b71a;">PLAY</h4>
+                   <h4 style="--clr:rgba(0, 0, 0, 0.7);"><ion-icon name="checkmark-outline"></ion-icon> FOLLOWİNG</h4>
+                 </div>
+            </div>
+        </div>
+
+
+
+        <div class="section-song-header">
+            <div class="section-song-header-left">
+                <label><h4 id="popular">POPULAR</h4></label>
+                <label><h4>ALBUMS</h4></label>
+                <label><h4>SONGS</h4></label>
+                <label><h4>FANS</h4></label>
+                <label><h4>ABOUT</h4></label>
+            </div>
+
+
+            <div class="section-song-header-right">
+                <label><h4>22.6M</h4></label>
+                <label><h4>FOLLOWERS</h4></label>
+            </div>
+        </div>
+
+
+
+        <div class="song-list">
+            <div class="song-list-header">
+                <label><h4>THE LİST</h4></label>
+                <label><h5>12 SONGS</h5></label>
+            </div>
+
+            <div class="song-list-albüm active">
+                <div class="number">#1</div>
+              <div class="song-list-albüm-img">
+                  <label><img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N//AABEIADYASAMBIgACEQEDEQH/xAAbAAEAAgMBAQAAAAAAAAAAAAAAAgQBAwUHBv/EADEQAAEEAQMCBAQEBwAAAAAAAAEAAgMRBAUSITFBFCJRYQYTQuEycaHxByQzgZHB0f/EABgBAAMBAQAAAAAAAAAAAAAAAAABAgQD/8QAHBEBAQACAwEBAAAAAAAAAAAAAQACEQMSIYET/9oADAMBAAIRAxEAPwDw1EREWV1NJ0d2cx888zcfFjq5H35jdU31K5a6eLmFoDZAXNAFAdqU5KHlWIL7ej5PwboU2OzCiwjjztxxkPyRK/cGnjobDiOvb+y8217RsvQNUl0/PYBJHyHD8L2no4ey+wl1aHVfiFuTGfMY44Iy3hxG7c42e3BHPXd6Wtf8TMpmfJgSeDycZwhDf5iMNs1yBRN/ZRjk71duTDEBL4Vv5crEpLnc107KUsbozTi308rgVqXWzsRERERFONjpHUwWURZjFc91eiwXyPY5kjImObbpJTta3rwT71+oVeGF/wA1jHsPmcOhXcwJ4sfOyoZS6ONji0gs3baPPrVV2Sa8Sj8Pwsi1GTMymvmw8Vu+V0Vnj6eR70F0/jzQstkjdZxpnZmiTUcaXdboWn6XjqOeL6HjuaVnQWNj1BmpPlZkaZ/QEVC/mOAAtnYHzO/MHuvo8nN06LD1uKXJDcSDB8P4aN1B1mietFwJHH63dZ/11y9NfbT+O+Ptv5eRmiKcLA/ytTwAfKbBCuNhfE0ySbRtIGw0SbHvxSrZDi6Sy1reOA3otBZcrUiInTFKN5Y62nlRWQLRFajzJI5mSxvc17PwkdQVjIzJp3l8sjnvPdxVZbcZ7myDZXPW/RLRV2Twr+nZskOPKGMYZXEbJHfRV8j35WcrIccT5Uh3SPduLrPP7/6UI2vpwY1os3fQBU5XOdI7ebI4T6h7Pvll4tElayp2VA9UiWVhEROmKTBZpERMtwiFf9VnTDGzJ2vbZd5WGgaPr9kRc1uug9KvlPkZI+FzzTXEGjwSFt8MTyXdURGeSBHHiKzwwBq+VWnZ8t9eyIlgq1cmIY2pERdbPf/Z"><span><h4>AHMET ASLAN</h4><h5>DOLANI DOLANI</h5></span></label>
+              </div>
+              
+              <div class="song-country">
+                  <h4>TURKISH ARTIST</h4>
+              </div>
+
+              <div class="song-list-albüm-izlenme">
+                  <label><ion-icon name="musical-notes-outline"></ion-icon><h4>91.330.207</h4></label>
+                  <label><ion-icon name="time-outline"></ion-icon><h4>02.07</h5></label>
+                <label id="heart"><i class="fa-solid fa-heart"></i></label>
+              </div>
+           </div>
+        
+          <div class="song-list-albüm">
+                <div class="number">#2</div>
+              <div class="song-list-albüm-img">
+                  <label><img src="data:image/jpeg;base64,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"><span><h4>MOZART</h4><h5>REQUİEM</h5></span></label>
+              </div>
+              
+              <div class="song-country">
+                  <h4>AUSTRIA ARTIST</h4>
+              </div>
+
+              <div class="song-list-albüm-izlenme">
+                  <label><ion-icon name="musical-notes-outline"></ion-icon><h4>85.224.132</h4></label>
+                  <label><ion-icon name="time-outline"></ion-icon><h4>03.17</h5></label>
+                <label id="heart"><i class="fa-solid fa-heart"></i></label>
+              </div>
+           </div>
+
+
+
+           <div class="song-list-albüm">
+                <div class="number">#3</div>
+              <div class="song-list-albüm-img">
+                  <label><img src="data:image/jpeg;base64,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"><span><h4>BEETHOVEN</h4><h5>EROİCİA</h5></span></label>
+              </div>
+              
+              <div class="song-country">
+                  <h4>GERMANEY ARTIST</h4>
+              </div>
+
+              <div class="song-list-albüm-izlenme">
+                  <label><ion-icon name="musical-notes-outline"></ion-icon><h4>73.843.418</h4></label>
+                  <label><ion-icon name="time-outline"></ion-icon><h4>05.22</h5></label>
+                <label id="heart"><i class="fa-solid fa-heart"></i></label>
+              </div>
+           </div>
+
+
+           <div class="song-list-albüm">
+                <div class="number">#4</div>
+              <div class="song-list-albüm-img">
+                  <label><img src="data:image/jpeg;base64,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"><span><h4>DİNU LİPATTİ</h4><h5>F-SHARP MİNÖR</h5></span></label>
+              </div>
+              
+              <div class="song-country">
+                  <h4>ROMANIA ARTIST</h4>
+              </div>
+
+              <div class="song-list-albüm-izlenme">
+                  <label><ion-icon name="musical-notes-outline"></ion-icon><h4>55.371.839</h4></label>
+                  <label><ion-icon name="time-outline"></ion-icon><h4>01.50</h5></label>
+                <label id="heart"><i class="fa-solid fa-heart"></i></label>
+              </div>
+           </div>
+
+
+           <div class="song-list-albüm">
+                <div class="number">#5</div>
+              <div class="song-list-albüm-img">
+                  <label><img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N//AABEIAEwAZQMBIgACEQEDEQH/xAAcAAACAgMBAQAAAAAAAAAAAAAAAQUHAgQGCAP/xAAwEAACAQQBAwIFAwQDAQAAAAABAgMABAURIQYSMRNBFCIyUWEVcYEHQ5GhwdHwJv/EABcBAQEBAQAAAAAAAAAAAAAAAAACAQP/xAAcEQEBAQEAAwEBAAAAAAAAAAAAARECEiFBMQP/2gAMAwEAAhEDEQA/AKNqZ6cs1uDeTG2N09vEHjg7SQzF1UFgOSBsnXvqoat3FZK4xd18RbFe4r2sjjaup8qR9uKCayPTl1cRW91Z2awvKh9WAN2gMGYdy9x+kgA/jf2qLbB5BUL+ipAQv8sqE9oBbYAPPygnjyOalbrqyWaJZYmlgukACoio0Q8b1sbAOvH4FRsufyEsEsMkilZE7G1GqnXHuB9h2/txQSKYnFtZxyKLov8ABNdnUi6YKxUqeDrke3j/AHXNxxvK4SNGd2OgqjZP8VOQ9RJHbej+noxFobVHMrfQTs7+/O/GvNRtpO1oyyRrssCOdaOxrR2PHNBglhdSBu2FiU5YeCBvW9fbfG6+MsTxECQa7hscg7H/AIV2Vh0p1dksc2Yt8Tc/BmMyqw/uLo/SmxsE7PA9/cGuTnm9eRTOdnWi/P8Av70bnprUU2BVip8g6NKjBSp0qAooooCmKVMUE3hcP8XaT3bKkwi0BB6vYzb9x99bH+a6GDpFJLd/1OzGOPpK8L+oSZQRvY2dHgeP+91HdB52Dp/NR5B7H42RUKRQs/aC7aGzwd8b4/NXZ1je5LK4PGwXfSsktrfW4d1iLtJby+yABeDrWiwA3wdVyvV3HTmTI83Twm3nKb7gDw2vIr7QSGa9t9NFES6/PICy92/qYHex9xr+K3MzafBl7W4RkvIHZJNjXzKSDuohSVYEcEHddP2Jsyr3s8fdfpMWIy/Xt42YzLRyY57UTvHGE3sAjWwQefp1oVTnUdubDOXtr+oG/KSESXPzD1W997Ozz710dx1hj761xU14mUTJWClFe3ljWNRrQ7AQSvgb1r3PnmuMuriS6uZbiZu6SVy7n7k1HHl9V14/CWNppljhUyM7BVAHLE+Bqp686Tu7T4aF2eW+nRXNtBCzmMNwoLeNk8aG/wCaz6CyqYLPw5BooHlXaQtcfREx47z+2/PsCferps+qum7PHfqXUGTub90mNrJJ+nvHGsh04UKV38oAIp111LkjeeZ47Xnq+sLrH3DW97by28y62kqFSN8+D+9atdP1B6V/kcxLY37XdrHN3xes5LOrNruXfPuP481zJq5dR1MpUUUVqRTFKmKCa6Uz83T+Zt76MsVjYF1Gtsv2GwdfvVsf076tvLC0zOUySXDY52MkfqXYf0FBOlVS3cTyOe0b7d7qjaKjriX2ud5MqRy9+MjlL28mZ3a4meTuJ9yd7qPVSzaUEk+wrKKMyyKg8k63WzZ200l0ltDDLJcO3YqRIXck8aUDyar8Tfd1riCUuqCNizHSjXnnVYsjIxVwQQdEGrutsbirjAXn/wAfJDfH0ms7SS+kS6liUAPIq9ofjZLaVu5t/VoVVqQWlj1REmbtL2Gy9UF451IlEZ8E8An2PgbA9qzW+MbPSEMKZOK9ksYMlFaMplsp30JQ57AffgMy+eOV3Xf9bZy0wGTs8YthYHp025M+J9GMqJyracEH1Dzod+gOON1wvWE9hI1vf4mFrOdi0cvontikAAUMmue09p/H/MPd9RZi8xsWNuslcyWMQ0luX+Qc78e/81HO9e3TvObjRmmDyu0UYhVv7aE6A+3J3Xwp0q6uIooooCmKVMUBRRWzY2N3kJWisLS4upFXvZIIy5CjySB7cig+MbtG3ch5H43UniMxdWGdtslaSdtzG/yM58bGjz7cE/tWxmOmMtjLCPISwxzWTt2/FW7h1V9fQ/ujDxpgKjJMdcx4yPJNGRayTtArk+XUKxGv2YVlytmyrtyPWOLu8la5iHqDDwZFISYmmsPUeFOdxlhzvnX1DezrzzUvWfUFx1JmpL+5JOxqIFu4qnsu/wAc/wCagayjRpXVI1ZmY6VVGyT9hU88Yu/02ZhyyPK5eQ7Y+TrVYVL3fTeWtrqKzaykkvXiErWsKmSWEHwJFXlTrR0eRsb1UQRqrcxSp0qAooooCmKVMUBUr0zfvjctHPHbW87kdoE8zQhd+4kVlKHjzv3qKooPS3RvUeAe2uRl8ljBczARNDLkIrj1IwOB3kAuPP1liOear3+rPUvS+TsEwvTVgkSY+5Z1mtkSOFiRp+1R5Hj5vx7jmqroqZMbbr6W8MlxPHDCheSRgqKoJLEnQAA816Y6N/pp070tCmUkM818Iu717tgvobHJVeAp/J2RXmUseD4P4qcuuseoLvCrhrnJyy2Cr2iNwCe3ewO7W+D+fx4rbL8Jn1YfVXV1rZC5xGDvsPbWEe+x19S7lnbW+7gGMkk/U5Y753uqfJ2dnyaVZAn02G+CRukmFusaVOlWsFFFFB//2Q=="><span><h4>BRİAN MAY</h4><h5>RADİO GAGA</h5></span></label>
+              </div>
+              
+              <div class="song-country">
+                  <h4>ENGLAND ARTIST</h4>
+              </div>
+
+              <div class="song-list-albüm-izlenme">
+                  <label><ion-icon name="musical-notes-outline"></ion-icon><h4>50.144.235</h4></label>
+                  <label><ion-icon name="time-outline"></ion-icon><h4>03.02</h5></label>
+                <label id="heart"><i class="fa-solid fa-heart"></i></label>
+              </div>
+           </div>
+
+
+           <div class="song-list-albüm">
+                <div class="number">#6</div>
+              <div class="song-list-albüm-img">
+                  <label><img src="data:image/jpeg;base64,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"><span><h4>ANTONİ VİVALİ</h4><h5>4 SEASONS</h5></span></label>
+              </div>
+              
+              <div class="song-country">
+                  <h4>ITALY ARTIST</h4>
+              </div>
+
+              <div class="song-list-albüm-izlenme">
+                  <label><ion-icon name="musical-notes-outline"></ion-icon><h4>23.111.139</h4></label>
+                  <label><ion-icon name="time-outline"></ion-icon><h4>01.20</h5></label>
+                <label id="heart"><i class="fa-solid fa-heart"></i></label>
+              </div>
+           </div>
+
+           <div class="song-list-albüm">
+                <div class="number">#7</div>
+              <div class="song-list-albüm-img">
+                  <label><img src="data:image/jpeg;base64,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"><span><h4>RİCHARD WAGNER</h4><h5>TANNHAUSER</h5></span></label>
+              </div>
+              
+              <div class="song-country">
+                  <h4>İTALY ARTIST</h4>
+              </div>
+
+              <div class="song-list-albüm-izlenme">
+                  <label><ion-icon name="musical-notes-outline"></ion-icon><h4>13.732.403</h4></label>
+                  <label><ion-icon name="time-outline"></ion-icon><h4>07.50</h5></label>
+                <label id="heart"><i class="fa-solid fa-heart"></i></label>
+              </div>
+           </div>
+
+        
+
+        </div>
+
+
+        
+    </section>
+</div>
+
+
+
+
+
+
+
+<script type="text/javascript">
+    const navopen = document.querySelector('.nav-open');
+    const nav = document.querySelector('nav');
+    const songlistalbüm = document.querySelectorAll('.song-list-albüm');
+    const playlistmusic = document.querySelectorAll('.Playlist-music');
+    const navlabel = document.querySelectorAll('.nav-label');
+    function activeLink(){
+        navlabel.forEach((item) =>
+        item.classList.remove('active'));
+        this.classList.add('active');
+    }
+    navlabel.forEach((item) =>
+    item.addEventListener('click',activeLink));
+
+    function active(){
+        playlistmusic.forEach((item) =>
+        item.classList.remove('active'));
+        this.classList.add('active');
+    }
+    playlistmusic.forEach((item) =>
+    item.addEventListener('click',active))
+    function open(){
+        songlistalbüm.forEach((item) =>
+        item.classList.remove('active'));
+        this.classList.add('active');
+    }
+    songlistalbüm.forEach((item) =>
+    item.addEventListener('click',open));
+
+    function searchMenu(){
+      const input = document.querySelector('input');
+      input.addEventListener("keyup",function(){
+        let data = this.value.toUpperCase();
+        let li = document.querySelectorAll('.song-list-albüm');
+    for( let i = 0; i < li.length; i++) {
+        console.log(li[i].innerHTML);
+    if(li[i].innerHTML.toUpperCase().indexOf(data) > -1) {
+        li[i].classList.remove('kactive');
+    }else{
+        li[i].classList.add('kactive');
+    }
+      }
+      })
+    }
+    searchMenu();
+
+    navopen.addEventListener('click',() =>{
+        nav.classList.toggle('active');
+        navopen.classList.toggle('active');
+    })
+  </script>
+</body>
+</html>
